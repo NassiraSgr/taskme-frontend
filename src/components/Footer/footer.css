@@ -1,0 +1,28 @@
+footer {
+  background-color: #f2f2f2;   /* gris clair, visible sur fond blanc */
+  color: #333333;              /* texte foncé */
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #cccccc;
+}
+
+/* Liens */
+footer a {
+  color: #333333;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+/* Survol */
+footer a:hover {
+  text-decoration: underline;
+}
+
+body.dark-mode footer {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode footer a {
+  color: #ffffff;
+}
