@@ -25,7 +25,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
   // Récupération initiale depuis l'API
   const fetchNotifications = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/notifications", {
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/notifications", {
         method: "GET",
         credentials: "include", // envoie les cookies HttpOnly
         headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
   // Marquer une notification comme lue
   const markAsRead = async (id: string) => {
     try {
-      await fetch(`http://localhost:3000/api/notifications/${id}/read`, {
+      await fetch(`https://taskme-backend-wt4m.onrender.com/api/notifications/${id}/read`, {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

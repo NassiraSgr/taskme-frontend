@@ -33,7 +33,7 @@ function App() {
   // Vérifie session existante
   const fetchUser = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/user", {
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/user", {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Not authenticated");

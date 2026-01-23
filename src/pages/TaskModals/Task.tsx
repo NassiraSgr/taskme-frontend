@@ -56,7 +56,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/task/${id}`,{
+        const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`,{
           credentials:'include'
         });
         if (!res.ok) return;
@@ -85,7 +85,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
   const handleSave = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/task/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editedData),
@@ -106,7 +106,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
     if (!userAffectation) return;
     const justification = statut === "refuse" ? prompt("Raison du refus") || "" : "";
     try {
-      await fetch(`http://localhost:3000/api/affectations/${userAffectation._id}`, {
+      await fetch(`https://taskme-backend-wt4m.onrender.com/api/affectations/${userAffectation._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ statut, justification }),
@@ -147,7 +147,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
             <div className="mt-3">
               <h6>Document associé :</h6>
               <a
-                href={`http://localhost:3000/${task.adminFile}`}
+                href={`https://taskme-backend-wt4m.onrender.com/${task.adminFile}`}
                 download
                 className="btn btn-outline-primary mb-3"
               >
@@ -155,7 +155,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
               </a>
               {task.adminFile.endsWith(".pdf") && (
                 <iframe
-                  src={`http://localhost:3000/${task.adminFile}`}
+                  src={`https://taskme-backend-wt4m.onrender.com/${task.adminFile}`}
                   width="100%"
                   height="600px"
                   style={{ border: "1px solid #ccc", borderRadius: "8px" }}

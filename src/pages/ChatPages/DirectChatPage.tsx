@@ -28,7 +28,7 @@ const DirectChatPage = ({user} :{user:string}) => {
   useEffect(() => {
     const loadUsers = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/users',{
+        const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/users',{
           headers:{'Content-Type':'application/json'},
           credentials:'include'
         }); 

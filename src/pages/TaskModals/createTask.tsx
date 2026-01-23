@@ -47,7 +47,7 @@ const CreateTask = () => {
           formData.append("adminFile", adminFile); 
         }
 
-        const response = await fetch("http://localhost:3000/api/addTask", {
+        const response = await fetch("https://taskme-backend-wt4m.onrender.com/api/addTask", {
           method: "POST",
           credentials: "include",
           body: formData,    

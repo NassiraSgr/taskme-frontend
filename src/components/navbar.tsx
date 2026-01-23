@@ -22,7 +22,7 @@ const Navbar = ({
   const [isopen, setIsopen] = useState(false);
 
   const logout = async () => {
-    await fetch("http://localhost:3000/api/logout", {
+    await fetch("https://taskme-backend-wt4m.onrender.com/api/logout", {
       method: "GET",
       credentials: "include",
     });

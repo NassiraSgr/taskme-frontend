@@ -6,7 +6,7 @@ export const useSocket = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const SOCKET_URL = "http://localhost:3000";
+    const SOCKET_URL = "https://taskme-backend-wt4m.onrender.com";
 
     const newSocket: Socket = io(SOCKET_URL, {
        withCredentials:true,

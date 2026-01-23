@@ -22,7 +22,7 @@ const EditTaskWindow = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`http://localhost:3000/api/task/${id}`);
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`);
       const data = await res.json();
       setTask(data.data);
 
@@ -42,7 +42,7 @@ const EditTaskWindow = () => {
     e.preventDefault();
     setLoading(true);
 
-    const res = await fetch(`http://localhost:3000/api/task/${id}`, {
+    const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       credentials:'include',

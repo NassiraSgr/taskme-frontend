@@ -45,7 +45,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   const fetchUserTasks = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:3000/api/affectations/me', {
+      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectations/me', {
         method: 'GET',
         credentials: 'include',
       });
@@ -78,7 +78,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   };
 
   const fetchUsers = async () => {
-    const res = await fetch('http://localhost:3000/api/users', {
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/users', {
       method: 'GET',
       credentials: 'include',
     });
@@ -118,7 +118,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
     }
 
     try {
-      const res = await fetch('http://localhost:3000/api/affectation/respond', {
+      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectation/respond', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

@@ -9,7 +9,7 @@ const HistoriqueDashboard = ({ user }: { user: any }) => {
 
 
   const handleDelete = async () => {
-    const res = await fetch('http://localhost:3000/api/historique/delete-all', {
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/historique/delete-all', {
       method:'DELETE',
       headers:{'Content-Type' : 'application/json'},
       credentials:'include'
@@ -29,7 +29,7 @@ const HistoriqueDashboard = ({ user }: { user: any }) => {
   const fetchHistorique = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/historique", {
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/historique", {
         method:'GET',
         credentials: "include",
         headers:{'Content-Type' : 'application/json'}

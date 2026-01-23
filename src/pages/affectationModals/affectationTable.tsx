@@ -28,7 +28,7 @@ const AffectationsTable = () => {
   const fetchAffectations = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/affectations?page=${page}&limit=${limit}`, { credentials: 'include' });
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/affectations?page=${page}&limit=${limit}`, { credentials: 'include' });
       if (!res.ok) throw new Error('Erreur lors du chargement des affectations');
       const data = await res.json();
       setAffectations(data.data);
@@ -44,7 +44,7 @@ const AffectationsTable = () => {
   
   const fetchUsers = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/users', { credentials: 'include' });
+      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/users', { credentials: 'include' });
       if (!res.ok) throw new Error('Erreur lors du chargement des utilisateurs');
       const data = await res.json();
       setUsers(data.data.filter((u: any) => u.role === 'AUDITEUR' && u.actif));
@@ -62,7 +62,7 @@ const AffectationsTable = () => {
   const handleDelete = async (id: string) => {
     if (!window.confirm("Voulez-vous vraiment supprimer cette affectation ?")) return;
     try {
-      const res = await fetch(`http://localhost:3000/api/affectation/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/affectation/${id}`, {
         method: 'DELETE',
         credentials: 'include'
       });
@@ -77,7 +77,7 @@ const AffectationsTable = () => {
   
   const handleEdit = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/affectation/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/affectation/${id}`, {
         method: 'PUT',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

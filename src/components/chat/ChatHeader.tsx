@@ -15,7 +15,7 @@ const ChatHeader = () => {
 
     try {
       const res = await axios.get(`/chat/${taskId}`,{withCredentials:true});
-      const res2 = await fetch(`http://localhost:3000/api/task/${taskId}`,{
+      const res2 = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${taskId}`,{
         headers:{'Content-Type':'application/json'},
         credentials:'include'
       })

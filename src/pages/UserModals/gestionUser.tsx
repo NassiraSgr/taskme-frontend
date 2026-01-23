@@ -25,7 +25,7 @@ const UsersManagement = ({userId}:{userId:string}) => {
   
   const loadUsers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/users", {
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/users", {
         credentials: "include",
       });
       const data = await res.json();
@@ -61,7 +61,7 @@ const UsersManagement = ({userId}:{userId:string}) => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${editingId}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/user/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -106,7 +106,7 @@ const UsersManagement = ({userId}:{userId:string}) => {
   const handleDeleteUser = async (id: string) => {
     if (!window.confirm("Supprimer cet utilisateur ?")) return;
     try {
-      await fetch(`http://localhost:3000/api/user/${id}`, {
+      await fetch(`https://taskme-backend-wt4m.onrender.com/api/user/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

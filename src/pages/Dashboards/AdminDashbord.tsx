@@ -47,7 +47,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
     setErrorAssign(null);
 
     // Envoi du taskId attendu par le backend
-    const res = await fetch('http://localhost:3000/api/affectation/auto', {
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectation/auto', {
       method: 'POST',
       credentials:'include',
       headers: { 'Content-Type': 'application/json' },
@@ -71,7 +71,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
   }
 };
   const getAllAffectations = async () => {
-    const res = await fetch('http://localhost:3000/api/affectations',{
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectations',{
       credentials:'include',
       headers:{'Content-Type':'application/json'}
     })
@@ -85,7 +85,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
   }
 
   const tasks = async () => {
-    const res = await fetch('http://localhost:3000/api/tasks',{
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/tasks',{
       credentials:'include'
     });
     if (!res.ok) return;
@@ -103,7 +103,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
   };
 
   const getUsers = async () => {
-    const res = await fetch('http://localhost:3000/api/users',{
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/users',{
       credentials:'include'
     });
     if (!res.ok) return;
@@ -112,7 +112,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
   };
 
   const getAffectation = async () => {
-    const res = await fetch('http://localhost:3000/api/tasks/affectation', { 
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/tasks/affectation', { 
       headers:{'Content-Type' : 'application/json'},
       credentials: 'include'
      });
@@ -132,7 +132,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
   };
 
   const getSpecialiteDistribution = async () => {
-    const res = await fetch('http://localhost:3000/api/users/distribution', { credentials: 'include' });
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/users/distribution', { credentials: 'include' });
     if (!res.ok) return;
     const data = await res.json();
     setSpecialite(data);
@@ -151,7 +151,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
     try {
       setLoadingAssign(true);
       setErrorAssign(null);
-      const res = await fetch('http://localhost:3000/api/affectation', {
+      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectation', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
