@@ -40,6 +40,27 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   const [responseType, setResponseType] = useState<'accept' | 'refuse' | 'delegate' | null>(null);
   const [justification, setJustification] = useState('');
   const [delegatedTo, setDelegatedTo] = useState('');
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  //fetch les messages non lus 
+  const fetchUnreadMessages = async () => {
+  try {
+    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/chat/unread', {
+      method: 'GET',
+      credentials: 'include',
+    });
+
+    if (!res.ok) throw new Error('Impossible de récupérer les messages non lus');
+    const data = await res.json();
+    console.log(data);
+    
+    setUnreadCount(data.unreadCount || 0);
+  } catch (err) {
+    console.error(err);
+    setUnreadCount(0);
+  }
+};
+
 
   // Fetch tasks
   const fetchUserTasks = async () => {
@@ -90,7 +111,11 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   useEffect(() => {
     fetchUserTasks();
     fetchUsers();
-    const interval = setInterval(fetchUserTasks, 15000);
+    fetchUnreadMessages();
+    const interval = setInterval(() => {
+      fetchUserTasks();
+      fetchUnreadMessages();
+    }, 15000);
     return () => clearInterval(interval);
   }, []);
 
@@ -198,6 +223,29 @@ const UserDashboard = ({ userId }: { userId: string }) => {
         <StatCard icon={<Clock />} label="Tâches en attente" value={userTasks.filter(t => t.status === 'en_attente').length} color="warning" />
         <StatCard icon={<Check />} label="Tâches acceptées" value={userTasks.filter(t => t.status === 'accepte').length} color="success" />
         <StatCard icon={<XCircle />} label="Tâches refusées" value={userTasks.filter(t => t.status === 'refuse').length} color="danger" />
+        <div className="col">
+          <div
+            className="card shadow-sm text-center h-100 position-relative"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/chat/direct")}
+          >
+            <div className="card-body">
+              <div className="mb-2 position-relative">
+                <MessageSquare size={24} />
+                {unreadCount > 0 && (
+                  <span
+                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    style={{ fontSize: '0.7rem' }}
+                  >
+                    {unreadCount}
+                  </span>
+                )}
+              </div>
+              <h4>Messagerie</h4>
+              <small className="text-muted">Consulter vos discussions</small>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* TASK LIST */}

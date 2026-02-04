@@ -177,19 +177,6 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
     }
   };
 
-  //pour determiner le statut de  la tache
-  const computeTaskStatut = (task: any) => {
-      const now = new Date();
-      const start = new Date(task.dateDebut);
-      const end = new Date(task.dateFin);
-
-      if (now < start) return "PLANIFIEE";
-      if (now >= start && now <= end) return "EN_COURS";
-      return "TERMINEE";
-};
-
-  
-
   //pagination
   const indexOfLastTask = currentPage * tasksPerPage;
   const indexOfFirstTask = indexOfLastTask - tasksPerPage;
@@ -272,7 +259,15 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
         <div className="card-body">
           <h5 className="card-title">Tâches récentes</h5>
           {currentTasks.map(task => {
-           const statut = computeTaskStatut(task);
+             const affectationsValides = affectation.filter(a =>
+                a.task?._id?.toString() === task._id.toString() &&
+                (a.statut === 'accepte' || a.confirmationDelegation === "acceptee")
+              );
+
+              const placesRestantes = task.nombrePlaces - affectationsValides.length;
+              //console.log(task._id, affectation.map(a => a.task), affectationsValides.length, placesRestantes);
+              const statut = task.statut;
+
           return (
             <div key={task._id} className="d-flex justify-content-between align-items-start border rounded p-3 mb-2 flex-column flex-md-row">
               <div>
@@ -296,7 +291,7 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
                 </span>
 
               {
-                userRole ==='COORDINATEUR' && 
+                userRole ==='COORDINATEUR' && statut !== 'TERMINEE' &&  placesRestantes > 0  && 
                 (
                   <button
                   className="btn btn-sm btn-primary ms-2"
