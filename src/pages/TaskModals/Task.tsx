@@ -153,14 +153,14 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
               >
                 Télécharger le fichier
               </a>
-              {task.adminFile.endsWith(".pdf") && (
+              {/* {task.adminFile.endsWith(".pdf") && (
                 <iframe
                   src={`https://taskme-backend-wt4m.onrender.com/${task.adminFile}`}
                   width="100%"
                   height="600px"
                   style={{ border: "1px solid #ccc", borderRadius: "8px" }}
                 />
-              )}
+              )} */}
             </div>
           )}
 
