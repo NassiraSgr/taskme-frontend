@@ -216,7 +216,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
                 )}
                 <div className="form-check mb-3">
                   <input type="checkbox" className="form-check-input" checked={editedData.vehiculeRequis} onChange={e => handleChange("vehiculeRequis", e.target.checked)} />
-                  <label className="form-check-label">Rémunérée</label>
+                  <label className="form-check-label">Necessite Vehicule</label>
                 </div>
                 {editedData.vehiculeRequis && (
                     <div className="mb-3">
