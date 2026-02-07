@@ -50,7 +50,7 @@ const HistoriqueDashboard = ({ user }: { user: any }) => {
     fetchHistorique();
     const interval = setInterval(fetchHistorique, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, [historique]);
 
   return (
     <div className="container py-4">

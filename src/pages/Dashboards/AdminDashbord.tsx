@@ -90,16 +90,19 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
     });
     if (!res.ok) return;
     const data = await res.json();
-    const sortedTasks = data.date.sort((a: any, b: any) => new Date(b.dateDebut).getTime() - new Date(a.dateDebut).getTime());
+    const tasksWithHours = data.date.map((t: any) => {
+    const start = new Date(t.dateDebut);
+    const end = new Date(t.dateFin);
+    const volumeHoraire = (end.getTime() - start.getTime()) / 1000 / 60 / 60;
+    return { ...t, volumeHoraire: Math.round(volumeHoraire * 100) / 100 };
+  });
 
-    setLastTasks(sortedTasks);
+  
+  const sortedTasks = tasksWithHours.sort(
+    (a: any, b: any) => new Date(b.dateDebut).getTime() - new Date(a.dateDebut).getTime()
+  );
 
-    const hours = data.date.reduce((acc: number, t: any) => {
-      const start = new Date(t.dateDebut);
-      const end = new Date(t.dateFin);
-      return acc + ((end.getTime() - start.getTime()) / 1000 / 60 / 60);
-    }, 0);
-    setTotalHours(Math.round(hours * 100) / 100);
+  setLastTasks(sortedTasks);
   };
 
   const getUsers = async () => {
@@ -210,7 +213,6 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
         </>}
         <StatCard icon={<DollarSign />} label="Rémunérées" value={lastTasks.filter(t => t.remuneree).length} color="info" />
         <StatCard icon={<DollarSign />} label="Non rémunérées" value={lastTasks.filter(t => !t.remuneree).length} color="secondary" />
-        <StatCard icon={<Clock />} label="Volume horaire (h)" value={totalHours} color="purple" />
         <Link to="/userManagement">
           <StatCard icon={<Users />} label="Utilisateurs" value={users.filter(u => Boolean(u.actif) && u.role==='AUDITEUR').length} color="dark" />
         </Link>
@@ -272,9 +274,9 @@ const Dashboard = ({ user, userRole }: { user: any, userRole: string }) =>
             <div key={task._id} className="d-flex justify-content-between align-items-start border rounded p-3 mb-2 flex-column flex-md-row">
               <div>
                 <strong>{task.title ?? task.nom}</strong>
-                <div className="text-muted small">{task.type} {task.direction ? `• ${task.direction}` : ''}</div>
+                <div className="text-muted small">{task.type} {task.ville ? `• ${task.ville}` : ''}</div>
               </div>
-              <small className="text-muted">{task.dateDebut.split("T")[0]}</small>
+              <small className="text-muted">{task.dateDebut.split("T")[0]} - {task.volumeHoraire.toFixed(2)}h</small>
               <div className="d-flex gap-2 align-items-center mt-2 mt-md-0">
                 <span className={`badge ${
                   statut === "PLANIFIEE"

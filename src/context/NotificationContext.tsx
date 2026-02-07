@@ -40,7 +40,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     fetchNotifications();
-  }, []);
+  }, [notifications]);
 
   // Écoute les nouvelles notifications via socket
   useEffect(() => {
