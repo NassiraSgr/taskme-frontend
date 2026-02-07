@@ -81,7 +81,7 @@ const Navbar = ({
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{name}</a>
               <ul className="dropdown-menu dropdown-menu-end">
-                <li><Link to="/dashboard" className="dropdown-item">Profil</Link></li>
+                <li><Link to="/dashboard" className="dropdown-item">Table de Bord</Link></li>
                 <li><Link to="/historique" className="dropdown-item">Historique</Link></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><button className="dropdown-item text-danger" onClick={logout}>Logout</button></li>
