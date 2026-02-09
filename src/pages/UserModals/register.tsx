@@ -169,6 +169,21 @@ const Register = () => {
                   onChange={(e) => setFormations(e.target.value)}
                 />
           </div>)}
+
+
+          {
+            role === "AUDITEUR" && (
+              <div className="mb-3">
+                <label className="form-label fw-semibold">Ancienneté</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            )
+          }
           
 
 
