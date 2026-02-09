@@ -13,6 +13,7 @@ const Register = () => {
     const [diplomes, setDiplomes] = useState('')
     const [formations, setFormations] = useState('')
     const [password, setPassword] = useState("");
+    const [anciennete, setAnciennete] = useState(0);
     const [redirect, setRedirect] = useState(false);
     const [error, setError] = useState('')
     
@@ -32,7 +33,7 @@ const Register = () => {
           method:'POST',
           headers:{'Content-Type' : 'application/json'}, 
           body : JSON.stringify({
-            firstName, lastName, email, role, specialite, grade, diplomes:diplomesArray, formations:formationsArray, password
+            firstName, lastName, email, role, specialite, grade, diplomes:diplomesArray, formations:formationsArray, password, anciennete
           })
         })
         const content = await response.json();
@@ -177,8 +178,9 @@ const Register = () => {
                 <label className="form-label fw-semibold">Ancienneté</label>
                 <input
                   type="number"
+                  value={anciennete}
                   className="form-control"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setAnciennete(Number(e.target.value))}
                   required
                 />
               </div>
