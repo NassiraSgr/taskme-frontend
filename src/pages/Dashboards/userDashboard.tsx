@@ -42,10 +42,10 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   const [delegatedTo, setDelegatedTo] = useState('');
   const [unreadCount, setUnreadCount] = useState(0);
 
-  //fetch les messages non lus 
+//fetch les messages non lus 
   const fetchUnreadMessages = async () => {
   try {
-    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/chat/unread', {
+    const res = await fetch('http://localhost:3000/api/chat/unread', {
       method: 'GET',
       credentials: 'include',
     });
@@ -66,7 +66,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   const fetchUserTasks = async () => {
     setLoading(true);
     try {
-      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectations/me', {
+      const res = await fetch('http://localhost:3000/api/affectations/me', {
         method: 'GET',
         credentials: 'include',
       });
@@ -99,7 +99,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   };
 
   const fetchUsers = async () => {
-    const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/users', {
+    const res = await fetch('http://localhost:3000/api/users', {
       method: 'GET',
       credentials: 'include',
     });
@@ -111,7 +111,8 @@ const UserDashboard = ({ userId }: { userId: string }) => {
   useEffect(() => {
     fetchUserTasks();
     fetchUsers();
-    fetchUnreadMessages();
+    fetchUnreadMessages(); 
+
     const interval = setInterval(() => {
       fetchUserTasks();
       fetchUnreadMessages();
@@ -143,7 +144,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
     }
 
     try {
-      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/affectation/respond', {
+      const res = await fetch('http://localhost:3000/api/affectation/respond', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

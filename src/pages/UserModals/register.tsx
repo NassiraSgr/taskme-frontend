@@ -13,7 +13,6 @@ const Register = () => {
     const [diplomes, setDiplomes] = useState('')
     const [formations, setFormations] = useState('')
     const [password, setPassword] = useState("");
-    const [anciennete, setAnciennete] = useState(0);
     const [redirect, setRedirect] = useState(false);
     const [error, setError] = useState('')
     
@@ -29,11 +28,11 @@ const Register = () => {
           .map(f => f.trim())
           .filter(f => f !== "");
         // console.log(firstName, email, password);
-        const response = await fetch('https://taskme-backend-wt4m.onrender.com/api/register',{
+        const response = await fetch('http://localhost:3000/api/register',{
           method:'POST',
           headers:{'Content-Type' : 'application/json'}, 
           body : JSON.stringify({
-            firstName, lastName, email, role, specialite, grade, diplomes:diplomesArray, formations:formationsArray, password, anciennete
+            firstName, lastName, email, role, specialite, grade, diplomes:diplomesArray, formations:formationsArray, password
           })
         })
         const content = await response.json();
@@ -170,22 +169,6 @@ const Register = () => {
                   onChange={(e) => setFormations(e.target.value)}
                 />
           </div>)}
-
-
-          {
-            role === "AUDITEUR" && (
-              <div className="mb-3">
-                <label className="form-label fw-semibold">Ancienneté</label>
-                <input
-                  type="number"
-                  value={anciennete}
-                  className="form-control"
-                  onChange={(e) => setAnciennete(Number(e.target.value))}
-                  required
-                />
-              </div>
-            )
-          }
           
 
 
@@ -194,7 +177,7 @@ const Register = () => {
           </button>
           {error &&  ( <div> <hr /> <div className="text-danger">{error}</div> </div>) } 
           <p className="text-center text-muted small mt-4 mb-0">
-            &copy; taskme 2025-2026
+            © taskme 2025-2026
           </p>
         </form>
       </div>

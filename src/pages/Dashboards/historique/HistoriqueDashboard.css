@@ -1,0 +1,208 @@
+.historique-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-section {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.header-section h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Bouton de suppression */
+.delete-button {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.delete-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.delete-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Badge statistiques */
+.stats-badge {
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.stats-badge .badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Liste historique */
+.historique-list {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.historique-item {
+  border-left: 4px solid transparent;
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+}
+
+.historique-item:hover {
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Badges d'action */
+.action-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.action-creation {
+  background-color: #28a745;
+  color: white;
+}
+
+.action-modification {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.action-suppression {
+  background-color: #dc3545;
+  color: white;
+}
+
+.action-consultation {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.action-default {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Contenu des items */
+.item-content {
+  width: 100%;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.acteur-name {
+  font-size: 1rem;
+  color: #333;
+}
+
+.item-details {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.task-info, .target-info {
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f8f9fa;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.item-footer {
+  font-size: 0.85rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* État vide */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: #adb5bd;
+  margin-bottom: 1rem;
+}
+
+.empty-message {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.empty-submessage {
+  font-size: 0.9rem;
+  color: #adb5bd;
+}
+
+/* État de chargement */
+.loading-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.loading-state .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Alertes personnalisées */
+.alert {
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .historique-container {
+    padding: 1rem;
+  }
+
+  .item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .item-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .delete-button {
+    width: 100%;
+  }
+}
