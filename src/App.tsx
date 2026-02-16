@@ -33,12 +33,9 @@ function App() {
   // Vérifie session existante
   const fetchUser = async () => {
     try {
-      const res = await fetch(
-        'https://taskme-backend-wt4m.onrender.com/api/user',
-        {
-          credentials: 'include',
-        },
-      );
+      const res = await fetch('http://localhost:3000/api/user', {
+        credentials: 'include',
+      });
       if (!res.ok) throw new Error('Not authenticated');
       const content = await res.json();
       setUser(content.data._id);
@@ -66,72 +63,73 @@ function App() {
           className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-gray-200' : 'bg-gray-100 text-gray-900'}`}
         >
           <Navbar
-            name={name}
+            name={name} 
             setName={setName}
             role={role}
-            setUser={setUser}
             setRole={setRole}
-          />
-          <main className="p-4">
-            <Routes>
-              <Route
-                path="/login"
-                element={
-                  <Login
-                    setUser={setUser}
-                    setRole={setRole}
-                    setName={setName}
+            setUser={setUser}
+          >
+            <main className="p-4">
+              <Routes>
+                <Route
+                  path="/login"
+                  element={
+                    <Login
+                      setUser={setUser}
+                      setRole={setRole}
+                      setName={setName}
+                    />
+                  }
+                />
+                <Route path="/register" element={<Register />} />
+                <Route path="/addTask" element={<CreateTask />} />
+                <Route path="/tasks" element={<Tasks />} />
+                <Route
+                  path="/tasks/:id"
+                  element={<Task userRole={role} userId={user} />}
+                />
+                <Route path="/" element={<Home user={user} />} />
+                <Route path="/notifications" element={<NotificationList />} />
+                <Route
+                  path="/userManagement"
+                  element={<UsersManagement userId={user} />}
+                />
+                <Route path="/edit-task/:id" element={<EditTaskWindow />} />
+                <Route path="/tasks/:taskId/chat" element={<TaskChatPage />} />
+                <Route path="/chat/task/:taskId" element={<TaskChatPage />} />
+                <Route
+                  path="/chat/direct"
+                  element={<DirectChatPage user={user} />}
+                />
+                <Route
+                  path="/chat/direct/:userId"
+                  element={<DirectChatPage user={user} />}
+                />
+                <Route
+                  path="/vehiculeManagement"
+                  element={<VehicleManagement userRole={role} />}
+                />
+                {role === 'SUPER_ADMIN' || role === 'COORDINATEUR' ? (
+                  <Route
+                    path="/dashboard"
+                    element={<Dashboard user={user} userRole={role} />}
                   />
-                }
-              />
-              <Route path="/register" element={<Register />} />
-              <Route path="/addTask" element={<CreateTask />} />
-              <Route path="/tasks" element={<Tasks />} />
-              <Route
-                path="/tasks/:id"
-                element={<Task userRole={role} userId={user} />}
-              />
-              <Route path="/" element={<Home user={user} />} />
-              <Route path="/notifications" element={<NotificationList />} />
-              <Route
-                path="/userManagement"
-                element={<UsersManagement userId={user} />}
-              />
-              <Route path="/edit-task/:id" element={<EditTaskWindow />} />
-              <Route path="/tasks/:taskId/chat" element={<TaskChatPage />} />
-              <Route path="/chat/task/:taskId" element={<TaskChatPage />} />
-              <Route
-                path="/chat/direct"
-                element={<DirectChatPage user={user} />}
-              />
-              <Route
-                path="/chat/direct/:userId"
-                element={<DirectChatPage user={user} />}
-              />
-              <Route
-                path="/vehiculeManagement"
-                element={<VehicleManagement userRole={role} />}
-              />
-              {role === 'SUPER_ADMIN' || role === 'COORDINATEUR' ? (
+                ) : (
+                  <Route
+                    path="/dashboard"
+                    element={<UserDashboard userId={user} />}
+                  />
+                )}
                 <Route
-                  path="/dashboard"
-                  element={<Dashboard user={user} userRole={role} />}
+                  path="/historique"
+                  element={<HistoriqueDashboard user={user} />}
                 />
-              ) : (
-                <Route
-                  path="/dashboard"
-                  element={<UserDashboard userId={user} />}
-                />
-              )}
-              <Route
-                path="/historique"
-                element={<HistoriqueDashboard user={user} />}
-              />
-              <Route path="/affectations" element={<AffectationsTable />} />
-            </Routes>
-          </main>
-          <hr />
-          <Footer />
+                <Route path="/affectations" element={<AffectationsTable />} />
+              </Routes>
+            </main>
+            <hr />
+            <Footer />
+          </Navbar>
         </div>
       </BrowserRouter>
     </NotificationProvider>
