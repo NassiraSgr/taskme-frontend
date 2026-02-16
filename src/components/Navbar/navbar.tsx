@@ -165,7 +165,6 @@ const Navbar = ({
 
   return (
     <div className={`modern-layout ${theme}`}>
-      {/* Sidebar Desktop */}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : 'collapsed'}`}>
         <div className="sidebar-header">
           <Link className="sidebar-brand" to="/">
@@ -206,7 +205,6 @@ const Navbar = ({
         </div>
       </aside>
 
-      {/* Sidebar Mobile */}
       {isMobileSidebarOpen && (
         <>
           <div
@@ -266,9 +264,7 @@ const Navbar = ({
         </>
       )}
 
-      {/* Main Content Area */}
       <div className="main-content">
-        {/* Top Bar */}
         <header className="topbar">
           <div className="topbar-left">
             <button
@@ -345,7 +341,7 @@ const Navbar = ({
           </div>
         </header>
 
-        {/* Page Content - C'EST ICI QUE VOS PAGES S'AFFICHENT */}
+        {/* C'EST ICI QUE LES PAGES S'AFFICHENT */}
         <main className="page-content">{children}</main>
       </div>
     </div>

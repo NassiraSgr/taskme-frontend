@@ -1,7 +1,4 @@
-/* ==========================================
-   MODERN LAYOUT - SIDEBAR + TOPBAR
-   Design moderne et professionnel
-   ========================================== */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -58,9 +55,7 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ==========================================
-   BASE LAYOUT
-   ========================================== */
+
 
 * {
   margin: 0;
@@ -81,9 +76,7 @@
   color: var(--text-primary-dark);
 }
 
-/* ==========================================
-   SIDEBAR
-   ========================================== */
+
 
 .sidebar {
   position: fixed;
@@ -297,9 +290,7 @@
   color: var(--primary-light);
 }
 
-/* ==========================================
-   MAIN CONTENT
-   ========================================== */
+
 
 .main-content {
   flex: 1;
@@ -314,9 +305,6 @@
   margin-left: var(--sidebar-collapsed-width);
 }
 
-/* ==========================================
-   TOPBAR
-   ========================================== */
 
 .topbar {
   position: sticky;
@@ -400,9 +388,7 @@
   align-items: center;
 }
 
-/* ==========================================
-   USER MENU (TOPBAR)
-   ========================================== */
+
 
 .user-menu-container {
   position: relative;
@@ -593,9 +579,7 @@
   background: var(--border-dark);
 }
 
-/* ==========================================
-   PAGE CONTENT
-   ========================================== */
+
 
 .page-content {
   flex: 1;
@@ -603,9 +587,7 @@
   overflow-y: auto;
 }
 
-/* ==========================================
-   MOBILE SIDEBAR
-   ========================================== */
+/* MOBILE SIDEBAR*/
 
 .sidebar-overlay {
   display: none;
@@ -623,9 +605,6 @@
   display: none;
 }
 
-/* ==========================================
-   GUEST NAVBAR (NON CONNECTÉ)
-   ========================================== */
 
 .guest-navbar {
   width: 100%;
@@ -711,9 +690,7 @@
   transform: translateY(-2px);
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN
-   ========================================== */
+
 
 @media (max-width: 1024px) {
   .sidebar {
@@ -872,9 +849,7 @@
   }
 }
 
-/* ==========================================
-   ACCESSIBILITY
-   ========================================== */
+/*ACCESSIBILITY*/
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -895,9 +870,7 @@
   outline-offset: 2px;
 }
 
-/* ==========================================
-   PRINT STYLES
-   ========================================== */
+
 
 @media print {
   .sidebar,

@@ -411,7 +411,6 @@ const EditTaskWindow = () => {
               </button>
             </div>
 
-            {/* Note */}
             <div className="text-sm text-gray-500 dark:text-gray-400 italic pt-4 border-t border-gray-200 dark:border-gray-800">
               <p>* Les champs marqués d'un astérisque sont obligatoires.</p>
               <p className="mt-1">Les modifications seront immédiatement visibles par tous les utilisateurs concernés.</p>

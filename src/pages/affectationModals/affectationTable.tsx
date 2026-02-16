@@ -217,7 +217,6 @@ const AffectationsTable = () => {
 
   return (
     <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-      {/* Header avec statistiques */}
       <div className="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -346,7 +345,6 @@ const AffectationsTable = () => {
         </div>
       </div>
 
-      {/* Message d'alerte */}
       {message && (
         <div className={`mx-6 mt-4 p-4 rounded-lg ${messageType === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
           <div className="flex items-center justify-between">

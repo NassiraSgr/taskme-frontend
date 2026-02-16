@@ -320,7 +320,6 @@ const Tasks = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      {/* En-tête avec statistiques */}
       <div className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
@@ -497,7 +496,6 @@ const Tasks = () => {
           </div>
         </div>
 
-        {/* Message d'alerte */}
         {message && (
           <div className={`mb-6 p-4 rounded-lg shadow-sm border-l-4 animate-in fade-in slide-in-from-top duration-300 ${
             messageType === 'success'
@@ -555,7 +553,6 @@ const Tasks = () => {
                     }`}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    {/* En-tête */}
                     <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-950/30 border-b border-gray-200 dark:border-gray-800">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex-1 min-w-0">
@@ -598,7 +595,6 @@ const Tasks = () => {
                       </div>
                     </div>
 
-                    {/* Tags */}
                     {(task.specialites && task.specialites.length > 0) || (task.grades && task.grades.length > 0) ? (
                       <div className="px-6 py-3 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800">
                         <div className="flex flex-wrap gap-2">
@@ -634,7 +630,6 @@ const Tasks = () => {
                       </p>
                     </div>
 
-                    {/* Footer */}
                     <div className="px-6 py-4 bg-gradient-to-br from-gray-50 to-blue-50/50 dark:from-gray-900/50 dark:to-blue-950/20 border-t border-gray-200 dark:border-gray-800">
                       <div className="grid grid-cols-2 gap-3 mb-4">
                         {daysRemaining !== null && (
@@ -693,7 +688,6 @@ const Tasks = () => {
               })}
             </div>
 
-            {/* Footer */}
             <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <p className="text-gray-700 dark:text-gray-300 font-medium">

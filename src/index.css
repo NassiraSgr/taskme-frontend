@@ -360,23 +360,20 @@ button {
   min-height: 100vh;
 }
 
-/* Tu peux aussi ajouter des transitions pour un effet plus doux */
+
 .main-light, .main-dark {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
 
-/* ==========================================
-   IMPROVED DASHBOARD STYLES
-   Design moderne et professionnel
-   ========================================== */
-
+/* 
+  Style dashboard 
 /* Importation de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Palette de couleurs moderne */
+  /* Palette de couleurs */
   --primary: #6366f1;
   --primary-hover: #4f46e5;
   --primary-light: #818cf8;
@@ -428,10 +425,6 @@ button {
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
-/* ==========================================
-   BASE STYLES
-   ========================================== */
-
 .improved-dashboard {
   min-height: 100vh;
   background: var(--bg-main);
@@ -452,9 +445,7 @@ button {
   }
 }
 
-/* ==========================================
-   DASHBOARD HEADER
-   ========================================== */
+/*  DASHBOARD HEADER*/
 
 .dashboard-header {
   margin-bottom: var(--spacing-2xl);
@@ -578,9 +569,7 @@ button {
   }
 }
 
-/* ==========================================
-   STATS GRID
-   ========================================== */
+/*STATS GRID*/
 
 .stats-grid {
   display: grid;
@@ -700,9 +689,7 @@ button {
   margin-top: 4px;
 }
 
-/* ==========================================
-   CHARTS GRID
-   ========================================== */
+/*CHARTS GRID*/
 
 .charts-grid {
   display: grid;
@@ -842,9 +829,7 @@ button {
   padding: var(--spacing-xl);
 }
 
-/* ==========================================
-   TASKS SECTION
-   ========================================== */
+/*TASKS SECTION*/
 
 .tasks-section {
   background: var(--bg-card);
@@ -1097,9 +1082,7 @@ button {
   gap: var(--spacing-md);
 }
 
-/* ==========================================
-   PAGINATION
-   ========================================== */
+/*PAGINATION*/
 
 .pagination {
   display: flex;
@@ -1165,9 +1148,7 @@ button {
   border-color: var(--primary);
 }
 
-/* ==========================================
-   MODALS
-   ========================================== */
+/*MODALS*/
 
 .modal-overlay {
   position: fixed;
@@ -1273,9 +1254,7 @@ button {
   width: 100%;
 }
 
-/* ==========================================
-   LOADING STATE
-   ========================================== */
+/*LOADING STATE*/
 
 .dashboard-loading {
   display: flex;
@@ -1296,9 +1275,7 @@ button {
   animation: spin 1s linear infinite;
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN
-   ========================================== */
+/*RESPONSIVE DESIGN*/
 
 @media (max-width: 768px) {
   .improved-dashboard {
@@ -1389,9 +1366,7 @@ button {
   }
 }
 
-/* ==========================================
-   PRINT STYLES
-   ========================================== */
+/*PRINT STYLES*/
 
 @media print {
   .improved-dashboard {
@@ -1416,9 +1391,7 @@ button {
   }
 }
 
-/* ==========================================
-   ACCESSIBILITY
-   ========================================== */
+/*ACCESSIBILITY*/
 
 @media (prefers-reduced-motion: reduce) {
   *,

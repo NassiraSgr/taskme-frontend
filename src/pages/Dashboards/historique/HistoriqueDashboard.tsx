@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "./HistoriqueDashboard.css"; // Pour les styles personnalisés
+import "./HistoriqueDashboard.css"; 
 
 interface Acteur {
   firstName: string;
@@ -20,7 +20,6 @@ interface HistoriqueItem {
 }
 
 interface User {
-  // Définissez les propriétés de l'utilisateur selon vos besoins
   id?: string;
   role?: string;
 }
@@ -93,7 +92,6 @@ const HistoriqueDashboard = ({ user }: { user: User }) => {
     }
   };
 
-  // Effet pour le chargement initial et le rafraîchissement périodique
   useEffect(() => {
     fetchHistorique();
     
@@ -120,7 +118,6 @@ const HistoriqueDashboard = ({ user }: { user: User }) => {
     }
   };
 
-  // Rendu du message de chargement
   if (loading && historique.length === 0) {
     return (
       <div className="historique-container loading-state">
@@ -137,7 +134,6 @@ const HistoriqueDashboard = ({ user }: { user: User }) => {
       <div className="header-section">
         <h2>Historique des actions</h2>
         
-        {/* Messages d'alerte */}
         {error && (
           <div className="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Erreur :</strong> {error}
@@ -162,7 +158,6 @@ const HistoriqueDashboard = ({ user }: { user: User }) => {
           </div>
         )}
 
-        {/* Bouton de suppression */}
         {historique.length > 0 && (
           <button
             onClick={handleDeleteAll}
@@ -185,7 +180,6 @@ const HistoriqueDashboard = ({ user }: { user: User }) => {
         )}
       </div>
 
-      {/* Contenu principal */}
       {historique.length === 0 ? (
         <div className="empty-state">
           <i className="bi bi-clock-history empty-icon"></i>

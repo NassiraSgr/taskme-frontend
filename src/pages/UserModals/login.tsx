@@ -31,8 +31,6 @@ const Login = ({ setUser, setRole, setName }: LoginProps) => {
         setError(content.message || 'Email ou mot de passe incorrect');
         return;
       }
-
-      // mettre à jour App state
       setUser(content.user._id);
       setRole(content.user.role);
       setName(content.user.firstName);

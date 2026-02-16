@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Types pour une meilleure typage
+
 interface FormErrors {
   [key: string]: string;
 }
@@ -26,7 +26,6 @@ interface TaskFormData {
 const CreateTask = () => {
   const navigate = useNavigate();
 
-  // État regroupé pour le formulaire
   const [formData, setFormData] = useState<TaskFormData>({
     nom: '',
     description: '',
@@ -376,7 +375,7 @@ const CreateTask = () => {
 
       {/* Formulaire */}
       <form onSubmit={handleSubmit} noValidate>
-        {/* Carte: Informations de base */}
+        {/* Informations de base */}
         <div className="card mb-4 border-0 shadow-sm">
           <div className="card-header bg-white border-0 pt-4">
             <h5 className="mb-0 d-flex align-items-center gap-2">
@@ -451,7 +450,7 @@ const CreateTask = () => {
           </div>
         </div>
 
-        {/* Carte: Dates et rémunération */}
+        {/* Dates et rémunération */}
         <div className="card mb-4 border-0 shadow-sm">
           <div className="card-header bg-white border-0 pt-4">
             <h5 className="mb-0 d-flex align-items-center gap-2">
@@ -564,7 +563,7 @@ const CreateTask = () => {
           </div>
         </div>
 
-        {/* Carte: Critères de sélection */}
+        {/* Critères de sélection */}
         <div className="card mb-4 border-0 shadow-sm">
           <div className="card-header bg-white border-0 pt-4">
             <h5 className="mb-0 d-flex align-items-center gap-2">
@@ -678,7 +677,7 @@ const CreateTask = () => {
           </div>
         </div>
 
-        {/* Carte: Transport */}
+        {/*  Transport */}
         <div className="card mb-4 border-0 shadow-sm">
           <div className="card-header bg-white border-0 pt-4">
             <h5 className="mb-0 d-flex align-items-center gap-2">
@@ -769,7 +768,7 @@ const CreateTask = () => {
           </div>
         </div>
 
-        {/* Carte: Documents et capacité */}
+        {/* Documents et capacité */}
         <div className="card mb-4 border-0 shadow-sm">
           <div className="card-header bg-white border-0 pt-4">
             <h5 className="mb-0 d-flex align-items-center gap-2">

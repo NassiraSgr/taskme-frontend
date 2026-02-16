@@ -199,7 +199,6 @@ const UserDashboard = ({ userId }: { userId: string }) => {
 
   return (
     <div className="container py-4">
-      {/* HEADER */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div>
           <h2 className="fw-bold">Bienvenue sur votre tableau de bord</h2>
@@ -416,7 +415,6 @@ const UserDashboard = ({ userId }: { userId: string }) => {
         </div>
       </div>
 
-      {/* MODAL RÉPONSE */}
       {showResponseModal && selectedTask && (
         <div className="modal d-block" onClick={() => setShowResponseModal(false)}>
           <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>

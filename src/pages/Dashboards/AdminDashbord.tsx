@@ -285,7 +285,6 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
 
   return (
     <div className="improved-dashboard">
-      {/* Header Section */}
       <header className="dashboard-header">
         <div className="header-content">
           <div className="header-text">
@@ -318,7 +317,6 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
         </div>
       </header>
 
-      {/* Stats Grid */}
       <section className="stats-grid">
         <StatCard 
           icon={<Briefcase />} 
@@ -365,9 +363,8 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
         </Link>
       </section>
 
-      {/* Charts Section */}
       <section className="charts-grid">
-        {/* Spécialités Chart */}
+{/* repartition par specialite */}
         <div className="chart-card">
           <div className="chart-header">
             <h3 className="chart-title">
@@ -393,7 +390,7 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
           </div>
         </div>
 
-        {/* Pie Chart */}
+        {/* tache par auditeur */}
         <div className="chart-card">
           <div className="chart-header">
             <h3 className="chart-title">Tâches par auditeur</h3>
@@ -429,7 +426,7 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
         </div>
       </section>
 
-      {/* Tasks Section */}
+      {/*  Section de tasks */}
       <section className="tasks-section">
         <div className="tasks-header">
           <div className="tasks-title-group">
@@ -580,7 +577,6 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
         )}
       </section>
 
-      {/* Modals */}
       {showAssignModal && selectedTask && (
         <div className="modal-overlay" onClick={() => setShowAssignModal(false)}>
           <div className="modal-content assignment-modal" onClick={e => e.stopPropagation()}>

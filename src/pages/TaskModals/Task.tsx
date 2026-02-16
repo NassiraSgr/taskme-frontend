@@ -223,7 +223,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
   const isUrgent = daysRemaining <= 3;
 
   return (
-    <div className="min-h-screen card-body bg-gray-50 dark:bg-gray-900"> {/* ICI : bg-gray-900 pour dark mode */}
+    <div className="min-h-screen card-body bg-gray-50 dark:bg-gray-900"> 
       {/* Message d'alerte */}
       {message && (
         <div className={`fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg border-l-4 animate-in slide-in-from-right-5 ${
@@ -243,7 +243,6 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
       )}
 
       <div className="container card-body mx-auto px-4 py-8">
-        {/* En-tête avec bouton retour */}
         <div className="mb-8">
           <a 
             href="/tasks" 
@@ -293,7 +292,6 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
           </div>
         </div>
 
-        {/* Grille d'informations */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Section principale */}
           <div className="lg:col-span-2 space-y-8">
@@ -399,9 +397,8 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
             </div>
           </div>
 
-          {/* Section latérale */}
+        
           <div className="space-y-8">
-            {/* Logistique */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 pb-3 border-b border-gray-200 dark:border-gray-700 flex items-center gap-2">
                 <Car className="w-5 h-5 text-amber-600 dark:text-amber-400" />
@@ -539,7 +536,6 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
           </div>
         </div>
 
-        {/* Modal d'édition */}
         {showEditModal && (
           <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
             <div 

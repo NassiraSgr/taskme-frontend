@@ -1,7 +1,6 @@
 export default function Home({ user }: { user: any }) {
   return (
     <main className="bg-body">
-      {/* Section Hero améliorée */}
       <section className="py-5 text-center bg-gradient">
         <div className="container py-5">
           <h1 className="fw-bold display-5 mb-4">
@@ -33,8 +32,6 @@ export default function Home({ user }: { user: any }) {
           </div>
         </div>
       </section>
-
-      {/* Section Fonctionnalités améliorée */}
       <section className="py-5">
         <div className="container">
           <div className="text-center mb-5">
@@ -97,7 +94,7 @@ export default function Home({ user }: { user: any }) {
         </div>
       </section>
 
-      {/* Section Interface améliorée */}
+      {/* Section Interface*/}
       <section className="py-5 bg-light">
         <div className="container text-center">
           <h2 className="fw-bold mb-4">Interface pensée pour la performance</h2>
@@ -129,8 +126,6 @@ export default function Home({ user }: { user: any }) {
           </div>
         </div>
       </section>
-
-      {/* Section CTA */}
       <section className="py-5">
         <div className="container text-center">
           <h3 className="fw-bold mb-4">Prêt à commencer ?</h3>

@@ -283,7 +283,7 @@ const UsersManagement = ({ userId }: { userId: string }) => {
     });
   };
 
-  // FONCTION exportToCSV - AJOUTÉE ICI
+  // FONCTION exportToCSV
   const exportToCSV = () => {
     const headers = ["Nom", "Prénom", "Email", "Rôle", "Spécialité", "Grade", "Ancienneté", "Statut"];
     const csvData = filteredUsers.map(user => [
