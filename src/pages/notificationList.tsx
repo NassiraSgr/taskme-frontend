@@ -17,7 +17,7 @@ export default function NotificationList() {
     setSuccessMessage(null);
 
     try {
-      const res = await fetch("http://localhost:3000/api/notifications/delete", {
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/notifications/delete", {
         method: "DELETE",
         credentials: "include",
       });

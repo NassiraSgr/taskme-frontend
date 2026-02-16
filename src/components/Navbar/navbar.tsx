@@ -67,7 +67,7 @@ const Navbar = ({
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:3000/api/logout', {
+      await fetch('https://taskme-backend-wt4m.onrender.com/api/logout', {
         method: 'GET',
         credentials: 'include',
       });

@@ -86,7 +86,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
 
   const fetchTask = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/task/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
         credentials: 'include'
       });
       if (!res.ok) {
@@ -123,7 +123,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
   const handleSave = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/task/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editedData),
@@ -155,7 +155,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/affectations/${userAffectation._id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/affectations/${userAffectation._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ statut, justification: statut === "refuse" ? prompt("Raison du refus") || "" : "" }),
@@ -468,7 +468,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
                 </h2>
                 
                 <a
-                  href={`http://localhost:3000/${task.adminFile}`}
+                  href={`https://taskme-backend-wt4m.onrender.com/${task.adminFile}`}
                   download
                   className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white font-semibold rounded-lg transition-all shadow hover:shadow-lg flex items-center justify-center gap-2"
                 >
@@ -479,7 +479,7 @@ const Task = ({ userRole, userId }: { userRole: string, userId: string }) => {
                 {task.adminFile.endsWith('.pdf') && (
                   <div className="mt-4">
                     <iframe
-                      src={`http://localhost:3000/${task.adminFile}`}
+                      src={`https://taskme-backend-wt4m.onrender.com/${task.adminFile}`}
                       className="w-full h-64 rounded-lg border border-gray-200 dark:border-gray-700"
                       title="Document PDF"
                     />

@@ -64,7 +64,7 @@ const Tasks = () => {
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:3000/api/tasks', {
+      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/tasks', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
@@ -95,7 +95,7 @@ const Tasks = () => {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/user', {
+      const res = await fetch('https://taskme-backend-wt4m.onrender.com/api/user', {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -182,7 +182,7 @@ const Tasks = () => {
     
     setDeletingId(_id);
     try {
-      const res = await fetch(`http://localhost:3000/api/task/${_id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${_id}`, {
         method: 'DELETE',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

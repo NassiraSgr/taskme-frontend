@@ -41,7 +41,7 @@ const EditTaskWindow = () => {
 
   const fetchTask = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/task/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
         credentials: 'include'
       });
       if (!res.ok) throw new Error('Erreur lors du chargement');
@@ -94,7 +94,7 @@ const EditTaskWindow = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:3000/api/task/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: 'include',

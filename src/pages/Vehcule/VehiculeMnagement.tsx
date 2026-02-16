@@ -93,7 +93,7 @@ const VehicleManagement = ({ userRole }: { userRole: string }) => {
   const fetchVehicles = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/vehicles", { 
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/vehicles", { 
         headers: { 'Content-Type': 'application/json' },
         credentials: "include" 
       });
@@ -112,7 +112,7 @@ const VehicleManagement = ({ userRole }: { userRole: string }) => {
 
   const fetchTasks = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/tasks", { 
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/tasks", { 
         headers: { 'Content-Type': 'application/json' },
         credentials: "include" 
       });
@@ -179,8 +179,8 @@ const VehicleManagement = ({ userRole }: { userRole: string }) => {
     try {
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-        ? `http://localhost:3000/api/vehicles/${editingId}`
-        : "http://localhost:3000/api/vehicles";
+        ? `https://taskme-backend-wt4m.onrender.com/api/vehicles/${editingId}`
+        : "https://taskme-backend-wt4m.onrender.com/api/vehicles";
 
       const payload = { ...form, annee: Number(form.annee) };
       const res = await fetch(url, {
@@ -219,7 +219,7 @@ const VehicleManagement = ({ userRole }: { userRole: string }) => {
     if (!window.confirm("Voulez-vous vraiment supprimer ce véhicule ? Cette action est irréversible.")) return;
     
     try {
-      const res = await fetch(`http://localhost:3000/api/vehicles/${id}`, { 
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/vehicles/${id}`, { 
         method: "DELETE", 
         credentials: "include" 
       });
@@ -256,7 +256,7 @@ const VehicleManagement = ({ userRole }: { userRole: string }) => {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/api/vehicles/available?dateDebut=${filterDates.dateDebut}&dateFin=${filterDates.dateFin}&ville=${filterDates.ville}`,
+        `https://taskme-backend-wt4m.onrender.com/api/vehicles/available?dateDebut=${filterDates.dateDebut}&dateFin=${filterDates.dateFin}&ville=${filterDates.ville}`,
         { credentials: "include" }
       );
       const data = await res.json();
@@ -286,7 +286,7 @@ const VehicleManagement = ({ userRole }: { userRole: string }) => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/vehicles/assign/${assignVehicle._id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/vehicles/assign/${assignVehicle._id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

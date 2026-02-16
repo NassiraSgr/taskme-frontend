@@ -61,7 +61,7 @@ const UsersManagement = ({ userId }: { userId: string }) => {
   const loadUsers = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/users", {
+      const res = await fetch("https://taskme-backend-wt4m.onrender.com/api/users", {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Erreur de chargement");
@@ -139,7 +139,7 @@ const UsersManagement = ({ userId }: { userId: string }) => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${editingId}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/user/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -184,7 +184,7 @@ const UsersManagement = ({ userId }: { userId: string }) => {
     if (!window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.")) return;
     
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${id}`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/user/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -201,7 +201,7 @@ const UsersManagement = ({ userId }: { userId: string }) => {
 
   const toggleUserStatus = async (id: string, currentStatus: boolean) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${id}/status`, {
+      const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/user/${id}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

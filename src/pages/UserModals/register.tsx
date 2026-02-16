@@ -28,7 +28,7 @@ const Register = () => {
           .map(f => f.trim())
           .filter(f => f !== "");
         // console.log(firstName, email, password);
-        const response = await fetch('http://localhost:3000/api/register',{
+        const response = await fetch('https://taskme-backend-wt4m.onrender.com/api/register',{
           method:'POST',
           headers:{'Content-Type' : 'application/json'}, 
           body : JSON.stringify({
