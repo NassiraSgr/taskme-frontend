@@ -10,7 +10,7 @@ import Tasks from './pages/TaskModals/tasks';
 import Task from './pages/TaskModals/Task';
 import Dashboard from './pages/Dashboards/AdminDashbord';
 import UsersManagement from './pages/UserModals/gestionUser';
-import UserDashboard from './pages/Dashboards/userDashboard';
+import UserDashboard from './pages/Dashboards/User/userDashboard';
 import HistoriqueDashboard from './pages/Dashboards/historique/HistoriqueDashboard';
 import NotificationList from './pages/notificationList';
 import { NotificationProvider } from './context/NotificationContext';
