@@ -1,6 +1,14 @@
 import "./Loader.css";
 
-const Loader = () => {
+interface LoaderProps {
+  title?: string;
+  message?: string;
+}
+
+const Loader = ({
+  title = "TaskMe",
+  message = "Chargement..."
+}: LoaderProps) => {
   return (
     <div className="loader-container">
       <div className="loader-card">
@@ -8,9 +16,9 @@ const Loader = () => {
           <div className="loader-circle"></div>
         </div>
 
-        <h2>TaskMe</h2>
+        <h2>{title}</h2>
 
-        <p>Chargement de votre espace...</p>
+        <p>{message}</p>
 
         <div className="loader-bar">
           <div className="loader-progress"></div>

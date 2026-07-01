@@ -9,6 +9,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Ba
 import ManualAssignModal from "../affectationModals/manuelAffectation";
 import AutoAssignModal from "../affectationModals/autoAssign";
 import SemiAutoModal from "../affectationModals/semiAuto";
+import Loader from "../../components/Loader/Loader";
 
 
 interface Task {
@@ -275,12 +276,7 @@ const Dashboard = ({ user, userRole }: { user: any; userRole: string }) => {
   };
 
   if (loading) {
-    return (
-      <div className="dashboard-loading">
-        <div className="loader"></div>
-        <p>Chargement du tableau de bord...</p>
-      </div>
-    );
+    return <Loader/>
   }
 
   return (

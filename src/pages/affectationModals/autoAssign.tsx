@@ -24,7 +24,16 @@ const AutoAssignModal: React.FC<AutoAssignModalProps> = ({ task, onClose, onAssi
         <div className="modal-content p-3">
           <h5>Affectation automatique de "{task.nom}"</h5>
 
-          {loading && <p>Chargement de la recommandation IA...</p>}
+          {loading && (
+            <div className="d-flex flex-column align-items-center py-5">
+              <div className="spinner-border text-primary mb-3" role="status">
+                <span className="visually-hidden">Chargement...</span>
+              </div>
+              <p className="text-muted mb-0">
+                Analyse de la tâche par l'IA...
+              </p>
+            </div>
+          )}
           {error && <div className="text-danger">{error}</div>}
 
           {report && (

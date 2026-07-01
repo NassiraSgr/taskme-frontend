@@ -19,6 +19,7 @@ import {
   Settings,
   Eye
 } from "lucide-react";
+import Loader from "../../components/Loader/Loader";
 
 type Affectation = {
   _id: string;
@@ -34,7 +35,7 @@ type User = { _id: string; firstName: string; lastName: string };
 const AffectationsTable = () => {
   const [affectations, setAffectations] = useState<Affectation[]>([]);
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [newAuditeurId, setNewAuditeurId] = useState<string>('');
   const [newMode, setNewMode] = useState<'manuel' | 'semi_auto' | 'auto'>('manuel');
@@ -87,12 +88,18 @@ const AffectationsTable = () => {
     }
   };
 
+  const refreshAffectations = async () => {
+    setLoading(true);
+    await fetchAffectations();
+    setLoading(false);
+  };
+
   useEffect(() => {
     fetchUsers();
   }, []);
 
   useEffect(() => {
-    fetchAffectations();
+    refreshAffectations();
   }, [page, searchTerm, filterMode, filterStatut]);
 
   const showMessage = (text: string, type: 'success' | 'error' = 'success') => {
@@ -215,6 +222,11 @@ const AffectationsTable = () => {
     }
   }, [message]);
 
+
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
       <div className="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50">
@@ -237,7 +249,7 @@ const AffectationsTable = () => {
               Exporter
             </button>
             <button
-              onClick={fetchAffectations}
+              onClick={refreshAffectations}
               disabled={loading}
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
             >

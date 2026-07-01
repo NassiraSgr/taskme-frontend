@@ -20,6 +20,7 @@ const EditTaskWindow = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error'>('success');
+  const [loadingTask, setLoadingTask] = useState(true);
 
   const [form, setForm] = useState({
     nom: "",
@@ -41,6 +42,7 @@ const EditTaskWindow = () => {
 
   const fetchTask = async () => {
     try {
+      setLoadingTask(true);
       const res = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${id}`, {
         credentials: 'include'
       });
@@ -61,6 +63,8 @@ const EditTaskWindow = () => {
     } catch (err) {
       console.error(err);
       showMessage("Erreur lors du chargement de la tâche", 'error');
+    }finally {
+      setLoadingTask(false);
     }
   };
 
@@ -127,13 +131,21 @@ const EditTaskWindow = () => {
     { value: "CONCEPTEUR_EVALUATION", label: "Concepteur d'évaluation", icon: FileText },
   ];
 
-  if (!task) {
+  if (loadingTask) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 text-blue-600 dark:text-blue-400 animate-spin mx-auto mb-4" />
           <p className="text-gray-600 dark:text-gray-400">Chargement de la tâche...</p>
         </div>
+      </div>
+    );
+  }
+
+  if (!task) {
+  return (
+      <div className="text-center py-10">
+        Tâche introuvable.
       </div>
     );
   }

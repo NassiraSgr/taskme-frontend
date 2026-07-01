@@ -5,6 +5,7 @@ import { Message } from "../../types/Message";
 import ChatBox from "../../components/chat/ChatBox";
 import ChatInput from "../../components/chat/ChatInput";
 import "./DirectChatPage.css";
+import Loader from "../../components/Loader/Loader";
 
 interface User {
   _id: string;
@@ -23,6 +24,8 @@ const DirectChatPage = ({user} :{user:string}) => {
   const [targetUser, setTargetUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [loadingChat, setLoadingChat] = useState(false);
 
   // Charger tous les utilisateurs disponibles
   useEffect(() => {
@@ -40,7 +43,9 @@ const DirectChatPage = ({user} :{user:string}) => {
         setUsers(data.data);
       } catch (err) {
         console.error("Erreur chargement utilisateurs :", err);
-      }
+      } finally {
+        setLoadingUsers(false);
+    }
     };
     loadUsers();
   }, []);
@@ -58,6 +63,7 @@ const DirectChatPage = ({user} :{user:string}) => {
   }, [userId]);
 
   const loadMessages = async (targetUserId: string) => {
+    setLoadingChat(true);
     try {
       setLoading(true);
       const res = await axios.get(`/chat/direct/${targetUserId}`);
@@ -71,7 +77,7 @@ const DirectChatPage = ({user} :{user:string}) => {
       setTargetUser(null);
       setMessages([]);
     } finally {
-      setLoading(false);
+      setLoadingChat(false);
     }
   };
 
@@ -106,6 +112,10 @@ const DirectChatPage = ({user} :{user:string}) => {
     `${u.firstName} ${u.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
     u.specialite.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loadingUsers) {
+    return <Loader />;
+}
 
   return (
     <div className="direct-chat-container">
@@ -144,8 +154,15 @@ const DirectChatPage = ({user} :{user:string}) => {
 
       {/* Zone de chat */}
       <div className="chat-main-area">
-        {loading ? (
-          <div className="loading-chat">Chargement...</div>
+       {loadingChat ? (
+          <div className="flex h-full items-center justify-center">
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              <p className="mt-4 text-gray-500">
+                Chargement de la conversation...
+              </p>
+            </div>
+          </div>
         ) : targetUser ? (
           <>
             {/* Header du chat */}

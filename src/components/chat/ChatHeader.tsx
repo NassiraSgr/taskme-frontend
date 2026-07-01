@@ -4,49 +4,90 @@ import axios from "../../api/axios";
 
 const ChatHeader = () => {
   const { taskId } = useParams<{ taskId: string }>();
-  const [taskName, setTaskName] = useState("Chargement...");
+
+  const [taskName, setTaskName] = useState("");
   const [messagesCount, setMessagesCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  
-
-  const fetchMessagesCount = async () => {
+  const fetchData = async () => {
     if (!taskId) return;
 
     try {
-      const res = await axios.get(`/chat/${taskId}`,{withCredentials:true});
-      const res2 = await fetch(`https://taskme-backend-wt4m.onrender.com/api/task/${taskId}`,{
-        headers:{'Content-Type':'application/json'},
-        credentials:'include'
-      })
-      const data = await res2.json()
-      //console.log(data.data.nom);
-      
-      setTaskName(data.data.nom)
-      if (res.data?.success) {
-        setMessagesCount(res.data.messages?.length || 0);
-       
+      const [messagesRes, taskRes] = await Promise.all([
+        axios.get(`/chat/${taskId}`, {
+          withCredentials: true,
+        }),
+
+        axios.get(`/task/${taskId}`, {
+          withCredentials: true,
+        }),
+      ]);
+
+      if (taskRes.data?.data) {
+        setTaskName(taskRes.data.data.nom);
+      }
+
+      if (messagesRes.data?.success) {
+        setMessagesCount(messagesRes.data.messages?.length || 0);
       }
     } catch (err) {
-      console.error("Erreur fetchMessagesCount:", err);
+      console.error("Erreur ChatHeader :", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const refreshData = async () => {
-    setLoading(true);
-    await fetchMessagesCount();
-    setLoading(false);
-  };
-
   useEffect(() => {
-    if (!taskId) return;
-    refreshData();
+    fetchData();
 
-    const interval = setInterval(refreshData, 30000);
+    const interval = setInterval(fetchData, 30000);
+
     return () => clearInterval(interval);
   }, [taskId]);
 
-  if (loading) return <div style={{ padding: 24, color: "#fff" }}>Chargement…</div>;
+  if (loading) {
+    return (
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: 16,
+          padding: 24,
+          marginBottom: 24,
+          boxShadow: "0 8px 30px rgba(0,0,0,.08)",
+          animation: "pulse 1.5s ease-in-out infinite",
+        }}
+      >
+        <div
+          style={{
+            width: 220,
+            height: 30,
+            background: "#e5e7eb",
+            borderRadius: 8,
+            marginBottom: 18,
+          }}
+        />
+
+        <div
+          style={{
+            width: 120,
+            height: 18,
+            background: "#e5e7eb",
+            borderRadius: 6,
+            marginBottom: 25,
+          }}
+        />
+
+        <div
+          style={{
+            width: 140,
+            height: 90,
+            background: "#e5e7eb",
+            borderRadius: 14,
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -56,64 +97,94 @@ const ChatHeader = () => {
         padding: 24,
         borderRadius: 16,
         marginBottom: 24,
-        boxShadow: "0 8px 32px rgba(102, 126, 234, 0.2)",
+        boxShadow: "0 8px 32px rgba(102,126,234,.25)",
       }}
     >
-      {/* Titre + statut */}
-      <div style={{display: "flex",justifyContent: "space-between",alignItems: "center",marginBottom: 20,}}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
           <div
             style={{
-              width: 48,
-              height: 48,
+              width: 50,
+              height: 50,
               borderRadius: 12,
-              background: "rgba(255, 255, 255, 0.15)",
+              background: "rgba(255,255,255,.15)",
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
+              alignItems: "center",
               fontSize: 24,
             }}
           >
             💬
           </div>
+
           <div>
-            <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>{taskName}</h2>        
+            <h2
+              style={{
+                margin: 0,
+                fontWeight: 700,
+                fontSize: 22,
+              }}
+            >
+              {taskName}
+            </h2>
+
+            <span
+              style={{
+                opacity: 0.85,
+                fontSize: 14,
+              }}
+            >
+              Discussion de la tâche
+            </span>
           </div>
         </div>
-
       </div>
 
-      {/* Statistiques */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 16,
+          gridTemplateColumns: "1fr",
         }}
       >
-        {/* Messages */}
         <div
           style={{
-            background: "rgba(255, 255, 255, 0.1)",
-            padding: 16,
-            borderRadius: 12,
+            background: "rgba(255,255,255,.12)",
+            padding: 18,
+            borderRadius: 14,
+            border: "1px solid rgba(255,255,255,.2)",
             textAlign: "center",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
           }}
         >
           <div
             style={{
               fontSize: 32,
               fontWeight: 700,
-              marginBottom: 8,
-              display: "flex",
-              justifyContent: "center",
-              gap: 8,
+              marginBottom: 6,
             }}
           >
             💬 {messagesCount}
           </div>
-          <div style={{ fontSize: 14, opacity: 0.9 }}>Messages</div>
+
+          <div
+            style={{
+              opacity: .9,
+            }}
+          >
+            Messages
+          </div>
         </div>
       </div>
     </div>

@@ -536,7 +536,7 @@ const Tasks = () => {
           <div className="bg-white dark:bg-gray-900 rounded-xl shadow border border-gray-200 dark:border-gray-800 p-16 text-center">
             <RefreshCw className="w-16 h-16 text-blue-500 dark:text-blue-400 animate-spin mx-auto mb-6" />
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Chargement en cours...</h3>
-            <p className="text-gray-600 dark:text-gray-400">Récupération des tâches depuis le serveur</p>
+            <p className="text-gray-600 dark:text-gray-400">Récupération des tâches </p>
           </div>
         ) : filteredTasks.length > 0 ? (
           <>

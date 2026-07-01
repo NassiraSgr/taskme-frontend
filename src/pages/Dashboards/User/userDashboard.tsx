@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css'; // Import du fichier CSS
+import Loader from '../../../components/Loader/Loader';
 
 interface Task {
   _id: string;
@@ -367,10 +368,7 @@ const UserDashboard = ({ userId }: { userId: string }) => {
         {/* Tasks list */}
         <div className="tasks-list">
           {loading ? (
-            <div className="loading-state">
-              <div className="spinner"></div>
-              <p>Chargement des tâches...</p>
-            </div>
+            <Loader/>
           ) : paginatedTasks.length === 0 ? (
             <div className="empty-state">
               <AlertCircle size={48} />

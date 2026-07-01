@@ -5,6 +5,7 @@ import { Message } from "../../types/Message";
 import ChatBox from "../../components/chat/ChatBox";
 import ChatInput from "../../components/chat/ChatInput";
 import ChatHeader from "../../components/chat/ChatHeader";
+import Loader from "../../components/Loader/Loader";
 
 const TaskChatPage = () => {
   const { taskId } = useParams<{ taskId: string }>();
@@ -53,8 +54,9 @@ const TaskChatPage = () => {
     }
   };
 
-  if (loading)
-    return <div style={{ padding: 50 }}>Chargement...</div>;
+  if (loading) {
+    return <Loader />;
+  }
 
   if (error)
     return (

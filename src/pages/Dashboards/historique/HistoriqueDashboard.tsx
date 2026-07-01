@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./HistoriqueDashboard.css"; 
+import Loader from "../../../components/Loader/Loader";
 
 interface Acteur {
   firstName: string;
@@ -119,14 +120,7 @@ const HistoriqueDashboard = ({ user }: { user: User }) => {
   };
 
   if (loading && historique.length === 0) {
-    return (
-      <div className="historique-container loading-state">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Chargement...</span>
-        </div>
-        <p>Chargement de l'historique...</p>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
