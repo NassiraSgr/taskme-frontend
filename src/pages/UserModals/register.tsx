@@ -30,6 +30,7 @@ const Register = () => {
         // console.log(firstName, email, password);
         const response = await fetch('https://taskme-backend-wt4m.onrender.com/api/register',{
           method:'POST',
+          credentials:"include",
           headers:{'Content-Type' : 'application/json'}, 
           body : JSON.stringify({
             firstName, lastName, email, role, specialite, grade, diplomes:diplomesArray, formations:formationsArray, password

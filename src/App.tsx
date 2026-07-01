@@ -20,6 +20,7 @@ import DirectChatPage from './pages/ChatPages/DirectChatPage';
 import { useTheme } from './context/ThemeContext';
 import VehicleManagement from './pages/Vehcule/VehiculeMnagement';
 import AffectationsTable from './pages/affectationModals/affectationTable';
+import Loader from "./components/Loader/Loader"
 
 function App() {
   const { theme } = useTheme();
@@ -54,7 +55,7 @@ function App() {
     fetchUser();
   }, []);
 
-  if (loading) return <p>Chargement...</p>;
+  if (loading) return <Loader />;
 
   return (
     <NotificationProvider>

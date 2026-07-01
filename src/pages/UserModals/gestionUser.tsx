@@ -23,7 +23,7 @@ import {
   ChevronRight,
   X
 } from "lucide-react";
-import './gestionUser.css'; 
+import "./gestionUser.css"
 
 const UsersManagement = ({ userId }: { userId: string }) => {
   const navigate = useNavigate();
