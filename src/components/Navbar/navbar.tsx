@@ -18,6 +18,7 @@ import NotificationButton from '../NotificationButton/NotificationButton';
 import ThemeToggle from '../ThemeToggle';
 import { useTheme } from '../../context/ThemeContext';
 import './navbar.css';
+import { useNavigate } from "react-router-dom";
 
 interface LayoutProps {
   name: string;
@@ -44,6 +45,7 @@ const Navbar = ({
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const navigate = useNavigate();
   // Fermer la sidebar mobile et dropdown lors du changement de page
   useEffect(() => {
     setIsMobileSidebarOpen(false);
@@ -66,19 +68,25 @@ const Navbar = ({
   }, []);
 
   const logout = async () => {
-    try {
-      await fetch('https://taskme-backend-wt4m.onrender.com/api/logout', {
-        method: 'GET',
-        credentials: 'include',
+  try {
+    await fetch(
+      "https://taskme-backend-wt4m.onrender.com/api/logout",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setUser(null);
+    setName("");
+    setRole("");
+    navigate("/login",{
+         replace:true
       });
-      setName('');
-      setRole('');
-      setUser(null);
-      setLoggedOut(true);
-    } catch (error) {
-      console.error('Erreur lors de la déconnexion:', error);
-    }
-  };
+  }
+};
 
   if (loggedOut) return <Navigate to="/login" />;
 
